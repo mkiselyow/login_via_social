@@ -36,3 +36,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+group :development, :test do
+  gem 'mysql2', '0.3.21'
+end
