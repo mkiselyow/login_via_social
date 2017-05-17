@@ -3,13 +3,16 @@ LightIt::Application.routes.draw do
     collection { post :import}
   end
 
-  root to: "users#index"
+  root to: "static_pages#index"
 
   resources :sessions, only: [:new, :create, :destroy, :edit]
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
+
+  match 'index', to: 'static_pages#index', via: [:get, :post]
+  get "/home" => "static_pages#index"
 
 
   # The priority is based upon order of creation:
