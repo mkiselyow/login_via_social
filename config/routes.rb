@@ -14,6 +14,10 @@ LightIt::Application.routes.draw do
   match 'index', to: 'static_pages#index', via: [:get, :post]
   get "/home" => "static_pages#index"
 
+  match 'auth/:provider/callback', to: 'sessions#fb_create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout_fb', to: 'sessions#fb_destroy'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

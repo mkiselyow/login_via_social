@@ -76,7 +76,8 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
+    session[:user_id] = nil
+    sign_out
     respond_to do |format|
       format.html { redirect_to root_url }
       format.json { head :no_content }

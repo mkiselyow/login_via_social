@@ -19,4 +19,17 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url, notice: "Logged Out!"
   end
+
+  def fb_create
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    sign_in user
+    redirect_to root_url
+  end
+
+  def fb_destroy
+    session[:user_id] = nil
+    sign_out
+    redirect_to root_url
+  end
 end
