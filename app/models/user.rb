@@ -1,4 +1,11 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :url
   has_secure_password
   attr_accessible :first_name, :last_name, :email, :username, :password_confirmation, :password, :uid, :provider, :oauth_token, :oauth_expires_at, :skip_valids
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -8,17 +15,19 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   before_save :create_remember_token
 
-  def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.first_name
-      user.email = auth.info.email
-      user.oauth_token = auth.credentials.token
-      user.token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.save!(validate: false)
+  def self.find_for_facebook_oauth access_token
+    if user = User.where(:url => access_token.info.urls.Facebook).first
+      user
+    else 
+      User.create!(:provider => access_token.provider, :url => access_token.info.urls.Facebook, :first_name => access_token.extra.raw_info.first_name, :last_name => access_token.extra.raw_info.last_name, :email => access_token.extra.raw_info.email, :password => Devise.friendly_token[0,20]) 
+    end
+  end
+
+  def self.find_for_vkontakte_oauth access_token
+    if user = User.where(:url => access_token.info.urls.Vkontakte).first
+      user
+    else 
+      User.create!(:provider => access_token.provider, :url => access_token.info.urls.Vkontakte, :first_name => access_token.info.first_name, :last_name => access_token.extra.raw_info.domain, :email => access_token.extra.raw_info.domain+'@vk.com', :password => Devise.friendly_token[0,20]) 
     end
   end
   

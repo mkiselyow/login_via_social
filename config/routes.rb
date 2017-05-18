@@ -1,9 +1,20 @@
 LightIt::Application.routes.draw do
+  get "omniauth_callbacks/facebook"
+
+  get "omniauth_callbacks/vkontakte"
+
+  devise_for :users
+
+  devise_for :models
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   resources :users do
     collection { post :import}
   end
 
-  root to: "static_pages#index"
+  # root to: "static_pages#index"
+  root :to => 'users#index'
 
   resources :sessions, only: [:new, :create, :destroy, :edit]
 
