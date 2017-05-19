@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :authorized, except: [:create, :fb_create]
+  before_filter :authorized, only: [:create]
   def new
   end
 
