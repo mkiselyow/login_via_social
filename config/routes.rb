@@ -16,7 +16,7 @@ LightIt::Application.routes.draw do
 
   match 'auth/:provider/callback', to: 'sessions#fb_create'
   match 'auth/failure', to: redirect('/')
-  match 'signout_fb', to: 'sessions#fb_destroy'
+  match 'signout', to: 'sessions#fb_destroy', as: 'signout'
 
 
   # The priority is based upon order of creation:
