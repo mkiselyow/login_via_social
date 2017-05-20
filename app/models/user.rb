@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
       user.save!(validate: false)
     end
   end
+
+  def feed
+    Post.where("user_id = ?", id)
+  end
   
   private
 

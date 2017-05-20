@@ -4,6 +4,7 @@
       <section class="add_post" id="add_post">
         <h3>Post Add</h3>
         <%= render 'users/user_info' %>
+        <%= render 'shared/post_form' %>
         <hr>
       </section>
     </article>
@@ -17,6 +18,6 @@
 <div class="col-md-12">
   <h3>Post Feed</h3>
   <div id="posts">
-
+    <%= render 'shared/feed' %>
   </div>
 </div>

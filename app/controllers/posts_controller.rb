@@ -47,7 +47,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to root_url, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,14 +79,16 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
 
   private
     def correct_user
-      @post = current_user.posts.find_by_id(params[:id])
-      redirect_to root_url, :notice => 'Can\'t' if @post.nil? 
+      if signed_in?
+        @post = current_user.posts.find_by_id(params[:id])
+        redirect_to root_url, :notice => 'Can\'t' if @post.nil? 
+      end
     end
 end
