@@ -1,4 +1,5 @@
 <% if signed_in? %>
+
   <div class="row">
     <article class="col-md-12">
       <section class="add_post" id="add_post">
@@ -12,9 +13,11 @@
   
 <% else %>
 
+  <h4>“Для добавления и комментирования сообщений выполните вход”</h4>
   <%= render 'users/login_buttons' %>
 
 <% end %>
+
 <div class="col-md-12">
   <h3>Post Feed</h3>
   <div id="posts">
