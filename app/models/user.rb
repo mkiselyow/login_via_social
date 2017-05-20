@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   before_save :create_remember_token
 
+  has_many :posts
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider

@@ -1,4 +1,7 @@
 LightIt::Application.routes.draw do
+  resources :posts
+
+
   resources :users do
     collection { post :import}
   end
