@@ -25,9 +25,7 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: thin
   pool: 5
   username: rbates
   password:
-  host: 127.0.0.1
-  port: 5432
