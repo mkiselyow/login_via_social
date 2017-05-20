@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.22.5'
+gem 'mysql2', '0.3.21'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'ancestry'
@@ -9,7 +10,6 @@ gem 'will_paginate', '~> 3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 
 
 # Gems used only for assets and not required
@@ -48,5 +48,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger'
 gem 'roo'
 group :development, :test do
-  gem 'mysql2', '0.3.21'
 end
