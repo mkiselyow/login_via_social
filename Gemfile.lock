@@ -158,5 +158,3 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   will_paginate (~> 3.1.1)
 
-BUNDLED WITH
-   1.14.6
