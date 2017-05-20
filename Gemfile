@@ -4,6 +4,7 @@ gem 'rails', '3.2.22.5'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'ancestry'
+gem 'will_paginate', '~> 3.1.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -23,6 +23,8 @@
 <div class="col-md-12">
   <h3>Post Feed</h3>
   <div id="posts">
-    <%= render 'shared/feed' %>
+    <div class="posts">
+      <%= nested_posts @posts %>
+    </div>
   </div>
 </div>

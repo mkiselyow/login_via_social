@@ -71,3 +71,11 @@ div {
     list-style: square;
   }
 }
+
+.nested_posts {
+  margin-left: 60px;
+}
+
+.nested_posts .nested_posts .nested_posts .nested_posts {
+  margin-left: 0;
+}
