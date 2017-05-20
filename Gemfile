@@ -11,6 +11,7 @@ gem 'sass'
 gem 'sprockets' 
 gem 'sprockets-rails'
 gem 'thin'
+gem 'test-unit', '~> 3.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
