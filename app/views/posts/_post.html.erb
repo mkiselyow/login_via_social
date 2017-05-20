@@ -1,0 +1,22 @@
+<li id="feed_item">
+  <span class="user">
+    <%= link_to post.user.email, post.user %>
+  </span><br>
+  <span class="content"><u><%= post.title %></u></span><br>
+  <span class="content"><%= post.body %></span><br>
+  <span class="created_at"><small>
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+  </small></span>
+  <% if current_user?(post.user) %>
+
+    <%= link_to "delete", post, method: :delete, data: { confirm: "You sure?" }, title: post.title, :class => 'delete_post' %>
+
+  <% end %>
+
+  <% if signed_in? %>
+
+    <%= link_to "reply", new_post_path(:parent_id => post), :class => 'delete_post' %>
+    
+  <% end %>
+  <hr>
+</div>

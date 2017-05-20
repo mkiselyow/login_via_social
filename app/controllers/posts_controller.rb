@@ -27,8 +27,17 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
+    # @post = Post.new
+    # @post.parent_id = params[:parent_id]
+    # @feed_items = @post.parent
+    # @feed_items = Post.new
+    # @feed_items.parent_id = params[:parent_id]
+    # @feed_items = @feed_items.parent
     @post = Post.new
-
+    @post.parent_id = params[:parent_id]
+    # @feed_items = Post.find(params[:parent_id])
+    # (:parent_id => params[:parent_id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
