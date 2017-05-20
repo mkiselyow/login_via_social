@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.3'
 
 gem 'rails', '3.2.22.5'
 gem 'mysql2', '0.3.21'
@@ -9,6 +10,7 @@ gem 'will_paginate', '~> 3.1.1'
 gem 'sass'
 gem 'sprockets' 
 gem 'sprockets-rails'
+gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
