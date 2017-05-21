@@ -14,6 +14,9 @@ gem 'thin'
 gem 'test-unit', '~> 3.0'
 gem 'devise-async'
 gem 'em-postgres'
+gem 'rails_12factor'
+gem 'pg'
+gem 'activerecord-postgresql-adapter'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -34,9 +37,7 @@ group :assets do
 end
 
 group :development, :production do
-  gem 'rails_12factor'
-  gem 'pg'
-  gem 'activerecord-postgresql-adapter'
+
 end
 
 gem 'jquery-rails'
