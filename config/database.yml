@@ -23,9 +23,8 @@ test:
   pool: 5
   timeout: 5000
 
-production:
+development:
   adapter: postgresql
-  encoding: unicode
-  pool: 5
-  username: rbates
-  password:
+  host: localhost
+  username: user
+  database: app-dev

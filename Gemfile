@@ -33,9 +33,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :production do
+group :development, :production do
   gem 'rails_12factor'
   gem 'pg'
+  gem 'activerecord-postgresql-adapter'
 end
 
 gem 'jquery-rails'
