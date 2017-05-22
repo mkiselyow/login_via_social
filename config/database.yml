@@ -27,5 +27,7 @@ production:
   adapter: postgresql
   host: localhost
   username: user
-  database: app-dev
+  database: light_it
   password: 
+  pool: 5
+  encoding: unicode
