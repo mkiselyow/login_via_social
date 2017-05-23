@@ -16,8 +16,9 @@
 
   <% if signed_in? %>
 
-    <%= link_to "reply", new_post_path(:parent_id => feed_item), :class => 'delete_post' %>
+    <%= link_to "reply", new_comment_path(:parent_id => feed_item), :class => 'delete_post' %>
     
   <% end %>
   <hr>
+  <%= nested_comments @comments %>
 </li>

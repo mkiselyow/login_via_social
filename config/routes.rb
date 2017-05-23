@@ -1,5 +1,12 @@
 LightIt::Application.routes.draw do
+  resources :comments
+
+
   resources :posts
+
+  resources :posts do
+    resources :comments
+  end
 
 
   resources :users do

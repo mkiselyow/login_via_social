@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_many :posts
+  has_many :comments, through: :posts
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
