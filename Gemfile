@@ -5,6 +5,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'ancestry'
 gem 'will_paginate', '~> 3.1.1'
+gem 'test-unit', '~> 3.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -48,5 +49,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger'
 gem 'roo'
 group :development, :test do
+  gem 'pry'
   gem 'mysql2', '0.3.21'
 end

@@ -1,16 +1,11 @@
 LightIt::Application.routes.draw do
-  resources :comments
-
-
-  resources :posts
-
   resources :posts do
     resources :comments
   end
 
-
   resources :users do
     collection { post :import}
+    resources :comments
   end
 
   root to: "static_pages#index"

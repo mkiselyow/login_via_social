@@ -16,9 +16,13 @@
 
   <% if signed_in? %>
 
-    <%= link_to "reply", new_comment_path(:parent_id => feed_item), :class => 'delete_post' %>
+    <%= link_to "reply", new_post_comment_path(feed_item), :class => 'delete_post' %>
     
   <% end %>
   <hr>
-  <%= nested_comments @comments %>
+  <% if feed_item.comments.any? %>
+    <ul class="posts">
+      <%= nested_comments feed_item.comments.arrange(:order => :created_at) %>
+    </ul>
+  <% end %>
 </li>

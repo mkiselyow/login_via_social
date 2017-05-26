@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    # @posts = Post.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @posts }
+    # end
   end
 
   # GET /posts/1
@@ -27,13 +27,13 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = Post.new
-    @post.parent_id = params[:parent_id]
+    # @post = Post.new
+    # @post.parent_id = params[:parent_id]
     
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @post }
+    # end
   end
 
   # GET /posts/1/edit

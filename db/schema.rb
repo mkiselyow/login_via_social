@@ -11,24 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170523001045) do
+ActiveRecord::Schema.define(:version => 20170524162354) do
 
   create_table "comments", :force => true do |t|
     t.string   "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "ancestry"
+    t.integer  "user_id"
+    t.integer  "post_id"
   end
 
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
+  add_index "comments", ["post_id", "created_at"], :name => "index_comments_on_post_id_and_created_at"
+  add_index "comments", ["user_id", "created_at"], :name => "index_comments_on_user_id_and_created_at"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.string   "body"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "ancestry"
+    t.integer  "comments_count", :default => 0
   end
 
   add_index "posts", ["ancestry"], :name => "index_posts_on_ancestry"
@@ -49,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20170523001045) do
     t.datetime "oauth_expires_at"
     t.string   "token"
     t.integer  "posts_count",      :default => 0
+    t.integer  "comments_count",   :default => 0
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

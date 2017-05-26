@@ -1,6 +1,6 @@
 <div class="comment">
   <span class="user">
-    <%= link_to comment.user.email, comment.user %>
+    <%#= link_to comment.user.email, comment.user %>
   </span><br>
   <span class="content"><%= comment.body %></span><br>
   <span class="created_at"><small>
@@ -8,13 +8,13 @@
   </small></span>
   <% if current_user?(comment.user) %>
 
-    <%= link_to "delete", comment, method: :delete, data: { confirm: "You sure?" }, :class => 'delete_post' %>
+    <%= link_to "delete", post_comment_path(comment.post, comment), method: :delete, data: { confirm: "You sure?" }, :class => 'delete_post' %>
 
   <% end %>
 
   <% if signed_in? %>
 
-    <%= link_to "reply", new_comment_path(:parent_id => post), :class => 'delete_post' %>
+    <%= link_to "reply", new_post_comment_path(comment.post, :parent_id => comment), :class => 'delete_post' %>
     
   <% end %>
   <hr>
